@@ -25,10 +25,8 @@
     - supervisor-groups
 
 - name: start and enable service
-  service:
-    name: supervisor
-    state: "{{ supervisor_state }}"
-    enabled: true
+  shell: service supervisor restart
+  when: supervisor_state == 'start'
   tags:
     - configuration
     - supervisor
